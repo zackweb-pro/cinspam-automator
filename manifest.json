@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Instagram DM Automator",
+  "name": "CINSPAM - Instagram DM Automator",
   "version": "1.0",
   "description": "Automate Instagram direct messages with human-like behavior",
   "permissions": [
@@ -14,7 +14,7 @@
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Instagram DM Automator"
+    "default_title": "CINSPAM - Instagram DM Automator"
   },
   "content_scripts": [
     {
