@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 400px;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 10px;
+    }
+    
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+    
+    h1 {
+      margin: 0 0 20px 0;
+      font-size: 24px;
+      text-align: center;
+      color: #fff;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #f0f0f0;
+    }
+    
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    
+    input[type="text"]::placeholder, textarea::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    textarea {
+      height: 80px;
+      resize: vertical;
+    }
+    
+    .settings {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .setting-item {
+      flex: 1;
+    }
+    
+    .setting-item input {
+      width: 100%;
+    }
+    
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #25d366;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    button:hover {
+      background: #128c7e;
+    }
+    
+    button:disabled {
+      background: #666;
+      cursor: not-allowed;
+    }
+    
+    .status {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: 500;
+      display: none;
+    }
+    
+    .status.success {
+      background: rgba(46, 204, 113, 0.3);
+      color: #2ecc71;
+    }
+    
+    .status.error {
+      background: rgba(231, 76, 60, 0.3);
+      color: #e74c3c;
+    }
+    
+    .status.info {
+      background: rgba(52, 152, 219, 0.3);
+      color: #3498db;
+    }
+    
+    .progress {
+      margin-top: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      height: 6px;
+      overflow: hidden;
+      display: none;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: #25d366;
+      width: 0%;
+      transition: width 0.3s;
+    }
+    
+    .warning {
+      background: rgba(255, 193, 7, 0.2);
+      color: #ffc107;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      font-size: 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📱 Instagram DM Automator</h1>
+    
+    <div class="warning">
+      ⚠️ Use responsibly! Max 100 usernames per session
+    </div>
+    
+    <div class="form-group">
+      <label for="usernames">Instagram Usernames (comma separated):</label>
+      <textarea id="usernames" placeholder="username1, username2, username3..." maxlength="2000"></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="message">Message:</label>
+      <textarea id="message" placeholder="Enter your message here..." maxlength="1000"></textarea>
+    </div>
+    
+    <div class="settings">
+      <div class="setting-item">
+        <label for="minDelay">Min Delay (seconds):</label>
+        <input type="number" id="minDelay" value="3" min="1" max="30">
+      </div>
+      <div class="setting-item">
+        <label for="maxDelay">Max Delay (seconds):</label>
+        <input type="number" id="maxDelay" value="8" min="1" max="30">
+      </div>
+    </div>
+    
+    <button id="startBtn">Start Automation</button>
+    <button id="stopBtn" style="display: none; background: #e74c3c;">Stop Automation</button>
+    
+    <div class="status" id="status"></div>
+    <div class="progress" id="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
